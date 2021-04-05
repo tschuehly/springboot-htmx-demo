@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTMX Test</title>
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script src="https://unpkg.com/htmx.org@1.3.3"></script>
+    <script src="https://unpkg.com/htmx.org@1.3.3/dist/ext/client-side-templates.js"></script>
+</head>
+<body>
+    <h1>Hallo</h1>
+    <div hx-ext="client-side-templates">
+        <div hx-get="/products"
+                mustache-template="productlist">Get Products</div>
+    </div>
+</body>
+</html>
+<script id="productlist"  type="x-tmpl-mustache">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Preis</th>
+        </tr>
+        {{#content}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{price}}</td>
+            </tr>
+        {{/content}}
+    </table>
+</script>
